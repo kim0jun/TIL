@@ -9,8 +9,8 @@ GFM은 표준 Markdown(SM)에 조금더 편하게 변경한 github 버젼입니�
 
 ###GFM LivePreviewer
 
-GFM으로 작성한 문서를 미리 볼수있는 사이트
-[링크](http://tmpvar.com/markdown.html)
+- GFM으로 작성한 문서를 미리 볼수있는 사이트
+- [바로가기](http://tmpvar.com/markdown.html)
 
 ##GFM문법
 
@@ -54,8 +54,8 @@ GFM으로 작성한 문서를 미리 볼수있는 사이트
 
 ###코드블락
 
-- `` `   인라인 블락
-- ```` ` 멀티라인 블락
+- `   인라인 블락
+- ``` 멀티라인 블락
 - 멀티라인으로 시작할때 언어종류를 적어주면 문법에따른 하이라이트표시가된다.
 
 ```javascript
