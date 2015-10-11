@@ -7,6 +7,11 @@ GFM Basic
 GFM은 표준 Markdown(SM)에 조금더 편하게 변경한 github 버젼입니다. 
 그리고 Markdown은 Plain text로 작성된 파일을 HTML로 변경해서 보여주기 위한 문법입니다.
 
+###GFM LivePreviewer
+
+GFM으로 작성한 문서를 미리 볼수있는 사이트
+[링크](http://tmpvar.com/markdown.html)
+
 ##GFM문법
 
 ###헤더
@@ -21,8 +26,23 @@ GFM은 표준 Markdown(SM)에 조금더 편하게 변경한 github 버젼입니�
 -문장의 줄바꿈을 그대로 반영합니다(Enter)
 
 ###들여쓰기
-- >,>>로 표현이가능합니다.
+- `>`,`>>`로 표현이가능합니다.
+>한칸들이기
+>>두칸들이기
 
+###강조
+- `**`으로 감싸면 볼드표시
+- `*`으로 감싸면 이탤릭 표시
+**볼드**
+*이탤릭*
+
+###수정
+- `~~`으로 감싸서 수정된부분을 표시
+~~수정전텍스트~~ 수정된텍스트
+
+###링크
+- `[텍스트](url)` 형식으로 표시
+[링크](https://github.com/kim0jun/TIL/blob/master/GFM/gfm-basic.md)
 
 ###리스트
 - -,+,* 를사용하여 작성합니다.
@@ -32,13 +52,19 @@ GFM은 표준 Markdown(SM)에 조금더 편하게 변경한 github 버젼입니�
 1. 숫자+"." 를사용하여 작성합니다.
 2. (숫자+"."+"공백"+"내용") 으로 작성하여야합니다.
 
-###코드
+###코드블락
 
-```
-    `사용하여 표시
+- `` `   인라인 블락
+- ```` ` 멀티라인 블락
+- 멀티라인으로 시작할때 언어종류를 적어주면 문법에따른 하이라이트표시가된다.
+
+```javascript
     var i:uint = 3;
 ```
+
 ###테이블
+- `|`,`-`을 사용하여 행과 열을 표시
+- 테이블 안에서도 마크다운 문법은 적용됩니다.
 ```
 First Header  | Second Header
 ------------- | -------------
@@ -49,10 +75,11 @@ Content Cell  | Content Cell
 
 First Header  | Second Header
 ------------- | -------------
-Content Cell  | ~~Display the~~Content Cell
-Content Cell  | _Closes_Content Cell
+Content Cell  | Content Cell
+Content Cell  | Content Cell
 
 이렇게 표시됩니다.
+
 
 
 
