@@ -38,17 +38,21 @@ GFM은 표준 Markdown(SM)에 조금더 편하게 변경한 github 버젼입니�
     `사용하여 표시
     var i:uint = 3;
 ```
-###table
+###테이블
 ```
 First Header  | Second Header
 ------------- | -------------
 Content Cell  | Content Cell
 Content Cell  | Content Cell
 ```
+이렇게 작성하면
+
 First Header  | Second Header
 ------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+Content Cell  | ~~Display the~~Content Cell
+Content Cell  | _Closes_Content Cell
+
+이렇게 표시됩니다.
 
 
 
