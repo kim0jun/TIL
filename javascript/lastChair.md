@@ -65,11 +65,9 @@ function lastChair($num){
 }
 
 ```
-n + n*n*n + n
 
-100 1000000 100
 
-- 현재 통과하지못함 동작은 제대로 하나 시간이 너무 오래걸리기때문(타임아웃 ㅠ)  -> ~~반복문을 너무 많이 써서 그런듯 개선해야함~~ 포기
+- 현재 통과하지못함 동작은 제대로 하나 시간이 너무 오래걸리기때문(타임아웃 ㅠ)  -> 반복문을 너무 많이 써서 그런듯 
 - 코드를 다시짜려고 했으나.. 결국 포기하고 다른사람들코드를 봄
 
 
@@ -86,7 +84,8 @@ n + n*n*n + n
 
 ```
 
-- 다른사람들과 다른방식으로 풀었다. 하지만 내코드보다 훨신가볍다.
+- 빈공백사이를 구함  
+- 이게 내가짠코드보다 훨씬 더 좋은코드다. -> 무의미한 연산의 최소화
 
 ```javascript
 
@@ -97,38 +96,58 @@ function lastChair(N){
     var seat;  
     var ranges = [];
 
-    ranges[0] = createRange(0, N-1);   
+    ranges[0] = createRange(0, N-1);   // 첫번째 공백을구함(첫번째는 0번째,마지막번호는 n-1번자리에 자동착석)
 
-    // find candidate range -> 자리를 찾음(인원에대한 반복문)
+    // find candidate range 
     for(var i = 2; i < N; i++) {
-
-        var largestSize = 0; 
+        //for문내에서 사용할 변수 세팅  
+        var largestSize = 0;  //가장먼곳
         var candidateRangeIdx = 0;
         var smallestStart = N-1;
-        // find the largest range closest to index 0 -> 
+
+        // find the largest range closest to index 0 ->  현재 생성된 공간만큼 반복
         for(var j = 0; j < ranges.length; j++) {
-            // look for the biggest range ->
+            // look for the biggest range  -> 이전 공간보다 큰공간을 찾으면 그공간의 값들을 저장
             if(ranges[j].size() > largestSize) {
-            largestSize = ranges[j].size();
-            smallestStart = ranges[j].start();
-            candidateRangeIdx = j;
+            
+                largestSize = ranges[j].size();
+                smallestStart = ranges[j].start();
+                candidateRangeIdx = j;
             }
 
-            // look for a range the same size but closer to index 0
+            // look for a range the same size but closer to index 0  
+            // -> 같은 크기의 공간 이나 0에서 더가까울때   최대공간값을 제외한값들을 업데이트
             if(ranges[j].size() == largestSize && ranges[j].start() < smallestStart) {
-            smallestStart = ranges[j].start();
-            candidateRangeIdx = j;
+                smallestStart = ranges[j].start();
+                candidateRangeIdx = j;
             }
+
+            //->위 두개의 if문을하나로 줄여보았다.(똑같이 작동한다)
+            //=============================================================================
+            /* 
+            if(ranges[j].size() > largestSize || 
+               (ranges[j].size() == largestSize && ranges[j].start() < smallestStart)){
+                largestSize = ranges[j].size();
+                smallestStart = ranges[j].start();
+                candidateRangeIdx = j;
+            }
+            */
+            //=============================================================================
         }
 
-        if(ranges[candidateRangeIdx].size() % 2 == 0) { // even
+        if(ranges[candidateRangeIdx].size() % 2 == 0) { // even -> 짝수와 홀수분기
+            //seat는 함수내 전역변수
+            //공간의 절반 + 공간의시작점에 앉힘
             seat = Math.floor(ranges[candidateRangeIdx].size() / 2) + ranges[candidateRangeIdx].start();
-        } else { // odd
+        } else { // odd -> 홀수면
+            //홀수의 경우에는 절반 + 공간시작점 +1(공간의 크기를 나눌때 내림하였음으로 1증가 시켜줘야함)
             seat = Math.floor(ranges[candidateRangeIdx].size() / 2) + ranges[candidateRangeIdx].start() + 1;
         }
 
-        // split range into two ranges
+        // split range into two ranges -> 공간을 반으로쪼갬
+        // 공간배열 맨뒤에 새롭게 앉은 사람의 값을 추가
         ranges[ranges.length] = createRange(seat, ranges[candidateRangeIdx].end());
+        // 기존공간배열 값 업데이트
         ranges[candidateRangeIdx] = createRange(ranges[candidateRangeIdx].start(), seat);
     }
 
