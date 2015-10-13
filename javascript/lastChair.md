@@ -65,8 +65,11 @@ function lastChair($num){
 }
 
 ```
+n + n*n*n + n
 
-- 현재 통과하지못함 동작은 제대로 하나 시간이 너무 오래걸리기때문  -> ~~반복문을 너무 많이 써서 그런듯 개선해야함~~ 포기
+100 1000000 100
+
+- 현재 통과하지못함 동작은 제대로 하나 시간이 너무 오래걸리기때문(타임아웃 ㅠ)  -> ~~반복문을 너무 많이 써서 그런듯 개선해야함~~ 포기
 - 코드를 다시짜려고 했으나.. 결국 포기하고 다른사람들코드를 봄
 
 
@@ -82,3 +85,86 @@ function lastChair($num){
     }
 
 ```
+
+- 다른사람들과 다른방식으로 풀었다. 하지만 내코드보다 훨신가볍다.
+
+```javascript
+
+function lastChair(N){
+
+    return N-1; // what was the point of this??  -> 이 사람도 결국엔 이렇게 푼듯 ㅋㅋㅋ
+
+    var seat;  
+    var ranges = [];
+
+    ranges[0] = createRange(0, N-1);   
+
+    // find candidate range -> 자리를 찾음(인원에대한 반복문)
+    for(var i = 2; i < N; i++) {
+
+        var largestSize = 0; 
+        var candidateRangeIdx = 0;
+        var smallestStart = N-1;
+        // find the largest range closest to index 0 -> 
+        for(var j = 0; j < ranges.length; j++) {
+            // look for the biggest range ->
+            if(ranges[j].size() > largestSize) {
+            largestSize = ranges[j].size();
+            smallestStart = ranges[j].start();
+            candidateRangeIdx = j;
+            }
+
+            // look for a range the same size but closer to index 0
+            if(ranges[j].size() == largestSize && ranges[j].start() < smallestStart) {
+            smallestStart = ranges[j].start();
+            candidateRangeIdx = j;
+            }
+        }
+
+        if(ranges[candidateRangeIdx].size() % 2 == 0) { // even
+            seat = Math.floor(ranges[candidateRangeIdx].size() / 2) + ranges[candidateRangeIdx].start();
+        } else { // odd
+            seat = Math.floor(ranges[candidateRangeIdx].size() / 2) + ranges[candidateRangeIdx].start() + 1;
+        }
+
+        // split range into two ranges
+        ranges[ranges.length] = createRange(seat, ranges[candidateRangeIdx].end());
+        ranges[candidateRangeIdx] = createRange(ranges[candidateRangeIdx].start(), seat);
+    }
+
+    return seat + 1;
+}
+
+
+var createRange = function(s, e) {
+
+    var _start = s; //시작
+    var _end = e; //끝
+    var _size = e - s - 1; //길이
+
+    var _getSize = function() {
+        return _size;
+    };
+
+    var _getStart = function() {
+        return _start;
+    };
+
+    var _getEnd = function() {
+        return _end;
+    };
+
+    var _toString = function() {
+        return "start " + _getStart() + " end " + _getEnd() + " size " + _getSize();
+    };
+
+    return {
+        start: _getStart,
+        size: _getSize,
+        end: _getEnd,
+        toString: _toString
+    };
+}
+
+```
+
