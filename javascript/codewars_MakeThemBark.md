@@ -43,7 +43,7 @@ function Dog(name, breed, sex, age){
 
 ##my solution
 
--Dog 클래스에 prototype으로 `bark()`함수를 추가하자
+- Dog 클래스에 prototype으로 `bark()`함수를 추가하자
 
 ```javascript
 
@@ -58,7 +58,7 @@ function Dog(name, breed, sex, age){
 
 ##other solution
 
--이런식으로 함수를 사용해보는건 처음인데 간결하게 쓰기에 좋은 것 같다.  다음에는 간단한 함수는 이런식으로도 짜봐야겠다. 
+- 이런식으로 함수를 사용해보는건 처음인데 간결하게 쓰기에 좋은 것 같다.  다음에는 간단한 함수는 이런식으로도 짜봐야겠다. 
 
 ```
 Dog.prototype.bark = () => 'Woof!';
