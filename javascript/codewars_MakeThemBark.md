@@ -44,6 +44,8 @@ function Dog(name, breed, sex, age){
 ##my solution
 
 - Dog 클래스에 prototype으로 `bark()`함수를 추가하자
+- it's easily
+
 
 ```javascript
 
@@ -53,7 +55,7 @@ function Dog(name, breed, sex, age){
    
 ```
 
-- it's a easily  :)
+
 
 
 ##other solution
