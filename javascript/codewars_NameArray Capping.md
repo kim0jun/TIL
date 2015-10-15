@@ -21,7 +21,8 @@ last chair
 
 -  이름배열 반복문 -> 이름을 쪼개서 반복문 -> 조건에 부합하는지에 따라 차례대로 반환
 
-```function capMe(names) {
+```javascript
+function capMe(names) {
     //배열에대한 반복
     return names.reduce(function(nameArray,current,index){
         //이름에대한반복
@@ -50,7 +51,7 @@ last chair
 - chartAt(0)으로 0번째인 첫번째 숫자를 toUpperCase() 로 대문자로 만들수있다.
 - substring(1)은 1번째 이후의 문자열을 새로반환한다. 이 문자들을  toUpperCase()로 소문자로 반환.
 
-```
+```javascript
 function capMe(names) {
         return names.map(function (n) { return n.charAt(0).toUpperCase() + n.substring(1).toLowerCase(); });
     }
