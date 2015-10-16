@@ -37,10 +37,10 @@ Jaden-Cased:     "How Can Mirrors Be Real If Our Eyes Aren't Real"
 ```javascript
 
     String.prototype.toJadenCase = function () {
-        var jadenStr = ""
+        var jadenStr = "";
         this.split(" ").map(function(str,index){
-            if(index != 0) jadenStr += " "
-            jadenStr += str.charAt(0).toUpperCase() + str.substring(1).toLowerCase()
+            if(index != 0) jadenStr += " ";
+            jadenStr += str.charAt(0).toUpperCase() + str.substring(1).toLowerCase();
         })
         return jadenStr;
     };
