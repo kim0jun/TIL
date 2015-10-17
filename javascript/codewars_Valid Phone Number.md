@@ -62,7 +62,7 @@ validPhoneNumber("(098) 123 4567")  => returns false
 ```
 
 - validPhoneNumber를 선언할때 bind를 사용하여 코드를 아주 간단하게 작성하였다.
-- bind는 새로운 함수를 만들어내는 함수 인데 파라미터로 값으로 모듈을 교체한다.
+- bind는 새로운 함수를 만들어내는 함수 인데 파라미터로 값으로 모듈을 사용한다.
 
 ```javascript
 
