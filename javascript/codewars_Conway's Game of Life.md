@@ -81,11 +81,26 @@ function checkNeighbour(cells,row,column){
 
 
 ##other solution
-
-
+    직관적으로 잘짯다. array의 map함수를 잘활용하였다.
+    반복문을 최소화 하여 가독성이높고, 코드도 가독성높게 정리하였다.
 
 ```javascript
-
+    function nextGen(cells) {
+        var get = function (i, j) { return (cells[i] && cells[i][j]) | 0 };
+        
+        cells = cells.map(function (row, i) {
+            return row.map(function (alive, j) {
+            var neighbors =
+                get(i-1, j-1) + get(i-1, j) + get(i-1, j+1) +
+                get(i  , j-1)               + get(i  , j+1) +
+                get(i+1, j-1) + get(i+1, j) + get(i+1, j+1);
+                
+            return (neighbors === 3 || (neighbors === 2 && alive)) | 0;
+            });
+        });
+        
+        return cells;
+    }
   
 
 ```
